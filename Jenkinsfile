@@ -4,12 +4,12 @@ pipeline {
     stages {
         stage('Setup') {
             steps {
-                bat 'npm install'
+                sh 'npm install'
             }
         }
         stage('Test') {
             steps {
-                bat 'NO_COLOR=1 npm run cy:run'
+                sh 'NO_COLOR=1 npm run cy:run'
             }
         }
         stage('Deploy') {
