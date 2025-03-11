@@ -35,8 +35,9 @@ context('Exercicio - Testes End-to-end - Fluxo de pedido', () => {
         produtosPage.pagamentoEntrega()
         produtosPage.finalizarCompra()
 
-        cy.get('.woocommerce-notice').should('contain', 'Obrigado. Seu pedido foi recebido.')  
-      
+        cy.wait(10000); // Espera 5 segundos antes de validar
+        cy.get('.woocommerce-notice').should('contain', 'Obrigado. Seu pedido foi recebido.');
+       
                
   });
 
