@@ -1,5 +1,6 @@
 trigger:
 - ci
+
 pool:
   vmImage: ubuntu-latest
 steps:
