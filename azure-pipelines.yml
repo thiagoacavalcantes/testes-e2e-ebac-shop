@@ -1,10 +1,7 @@
 trigger:
 - ci
-
-
 pool:
   vmImage: ubuntu-latest
-
 steps:
 - task: NodeTool@0
   displayName: "Setup"
