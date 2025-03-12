@@ -2,19 +2,22 @@ pipeline {
     agent any
 
     stages {
-        stage('Clonar o repositório') {
+        stage('Setup') {
             steps {
-                git branch 'main' url: 'https://github.com/thiagoacavalcantes/teste-api-ebac.git'
-             }
-        }
-        stage('Instalar dependencias') {
-            steps {
-                sh 'npm install'
+                bat 'npm install'
             }
         }
-        stage('Executar Testes') {
+        stage('Test') {
             steps {
-                sh 'NO_COLOR=1 npm run cy:run'
+                bat '''
+        set NO_COLOR=1
+        npm run cy:run
+        '''
+            }
+        }
+        stage('Deploy') {
+            steps {
+                publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, icon: '', keepAll: false, reportDir: 'cypress\\reports\\mochawesome', reportFiles: 'index.html', reportName: 'EBAC Report', reportTitles: '', useWrapperFileDirectly: true])
             }
         }
     }

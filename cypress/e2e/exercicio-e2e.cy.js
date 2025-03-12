@@ -27,16 +27,17 @@ context('Exercicio - Testes End-to-end - Fluxo de pedido', () => {
         produtosPage.addProdutoCarrinho('M', 'Brown', qtd)              
         produtosPage.buscarProduto('Ajax Full-Zip Sweatshirt')
         produtosPage.addProdutoCarrinho('S', 'Green', qtd)    
-        produtosPage.buscarProduto('Atlas Fitness Tank')          
-        produtosPage.addProdutoCarrinho('L', 'Blue', qtd)
+        produtosPage.buscarProduto('Balboa Persistence Tee')          
+        produtosPage.addProdutoCarrinho('L', 'Gray', qtd)
         produtosPage.visualizarCarrinho()
         produtosPage.concluirCompra()
         produtosPage.botaoLogin()
         produtosPage.pagamentoEntrega()
         produtosPage.finalizarCompra()
 
-        cy.get('.woocommerce-notice').should('contain', 'Obrigado. Seu pedido foi recebido.')  
-      
+        cy.wait(10000); // Espera 5 segundos antes de validar
+        cy.get('.woocommerce-notice').should('contain', 'Obrigado. Seu pedido foi recebido.');
+       
                
   });
 
